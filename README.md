@@ -19,7 +19,7 @@ Um projeto desenvolvido para auxiliar pessoas a adotarem novas rotinas saudávei
 
 ## Orientador
 
-* Nome completo do professor 1
+* Nathalia Assis Valentim
 
 ## Instruções de utilização
 
@@ -45,7 +45,7 @@ Assim que a primeira versão do sistema estiver disponível, deverá complementa
 
 # Código
 
-<li><a href="src/README.md"> Código Fonte</a></li>
+<li><a href="src/README.md">Código Fonte</a></li>
 
 # Apresentação
 
