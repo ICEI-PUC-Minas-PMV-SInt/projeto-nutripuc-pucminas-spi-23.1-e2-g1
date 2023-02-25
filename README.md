@@ -1,10 +1,10 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`Sistemas Para Internet`
 
-`DISCIPLINA`
+`Projetos: Desenvolvimento Web Front-end`
 
-`SEMESTRE`
+`Eixo 02`
 
 Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
 
