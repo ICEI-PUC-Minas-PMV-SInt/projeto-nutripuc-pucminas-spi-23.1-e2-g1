@@ -1,12 +1,12 @@
-# TÍTULO DO PROJETO
+# Sistema Auxiliar de Rotinas Saudáveis (Nutripuc)
 
-`Sistemas Para Internet`
+`CURSO: Sistemas Para Internet`
 
-`Projetos: Desenvolvimento Web Front-end`
+`DISCIPLINA: Projetos - Desenvolvimento Web Front-end`
 
 `Eixo 02`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Um projeto desenvolvido para auxiliar pessoas a adotarem novas rotinas saudáveis. Para isso, estamos desenvolvendo um sistema beta com seis funcionalidades principais: 1. Calculadora de IMC, 2. Histórico de Peso com gráfico, 3. Registro de consumo de água, 4. Diário de alimentação, 5. Registro de Atividade Físic e 6. Metas.
 
 ## Integrantes
 
