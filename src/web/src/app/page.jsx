@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <main className='grid grid-cols-1 lg:grid-cols-2 my-36 items-center bg-teal-100'>
       <div className='min-w-[320px] max-w-[60ch] justify-self-center justify-center items-center flex flex-col md:items-start md:justify-start'>
-        <h2 className='md:text-9xl text-center text-7xl text-gray-50 italic font-bold'>Nutripuc</h2>
-        <h3 className='text-2xl md:text-5xl text-center md:text-start  font-semibold text-slate-500 my-4'>Seu aplicativo de atividades</h3>
+        <h2 className='md:text-9xl text-center text-7xl text-gray-50 italic font-bold drop-shadow-[2px_2px_2px_rgba(0,0,0,0.25)]'>Nutripuc</h2>
+        <h3 className='text-2xl md:text-5xl text-center md:text-start  font-semibold text-slate-500 my-4 max-w-[15ch]'>Seu aplicativo de saúde geral</h3>
         <p className='text-center items-center self-center md:text-left md:self-start my-4 max-w-[35ch]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ullam quam voluptatibus deleniti reprehenderit enim esse sit et voluptates ad! </p>
       </div>
       <div className='min-w-[320px] justify-self-center'>
