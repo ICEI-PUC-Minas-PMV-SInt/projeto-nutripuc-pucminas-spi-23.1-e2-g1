@@ -1,27 +1,39 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Dashboard() {
   return (
-    <div className='w-screen h-full flex flex-wrap gap-10 justify-evenly'>
-      <div className='w-[280px] h-[280px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05]'>
-        FUNCIONALIDADE 1
+    <div className='w-screen h-full flex flex-wrap p-12 gap-10 justify-evenly'>
+      <Link href="/dashboard/calculadora-imc">
+        <div className='w-[520px] h-[520px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000'>
+          Calculadora IMC
+        </div>
+      </Link>
+      <Link href="/dashboard/historico-de-peso">
+      <div className='w-[520px] h-[520px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000 '>
+        Histórico de Peso
       </div>
-      <div className='w-[280px] h-[280px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] '>
-
-        FUNCIONALIDADE 2
+      </Link>
+      <Link href="/dashboard/consumo-de-agua">
+      <div className='w-[520px] h-[520px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000 '>
+        Registro de Consumo de Água
       </div>
-      <div className='w-[280px] h-[280px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] '>
-        FUNCIONALIDADE 3
+      </Link>
+      <Link href="/dashboard/diario-de-alimentacao">
+      <div className='w-[520px] h-[520px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000 '>
+        Diário de Alimentação
       </div>
-      <div className='w-[280px] h-[280px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] '>
-        FUNCIONALIDADE 4
+      </Link>
+      <Link href="/dashboard/atividade-fisica">
+      <div className='w-[520px] h-[520px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000 '>
+        Registro de Atividade Física
       </div>
-      <div className='w-[280px] h-[280px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] '>
-        FUNCIONALIDADE 5
+      </Link>
+      <Link href="/dashboard/metas">
+      <div className='w-[520px] h-[520px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000 '>
+        Metas SMART
       </div>
-      <div className='w-[280px] h-[280px] bg-teal-900 rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] '>
-        FUNCIONALIDADE 6
-      </div>
+      </Link>
     </div>
   )
 }
