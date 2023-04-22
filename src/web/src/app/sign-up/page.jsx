@@ -47,8 +47,7 @@ function SignUp() {
     
     const validatedForm = await registerFormSchema.safeParse(data)
     console.log("Validação do Formulário: ", validatedForm.success)
-    console.log(!validatedForm.success)
-    if (validatedForm.succes == false) {
+    if (validatedForm.success === false) {
       console.log("Entrei no erro")
       const submitErrors = validatedForm.error?.issues.map(issue => {
         return {
