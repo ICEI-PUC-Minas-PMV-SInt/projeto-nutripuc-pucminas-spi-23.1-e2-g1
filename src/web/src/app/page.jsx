@@ -1,10 +1,62 @@
-import Image from 'next/image'
+'use client'
+import { z } from "zod";
+
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import { Toaster, toast } from "react-hot-toast";
+import { useRouter } from 'next/navigation'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
+const formSchema = z.object({
+  email: z.string().email('Endereço de e-mail inválido').min(1, "Email obrigatório"),
+  password: z.string().min(1, "Senha obrigatória").min(8, "Senha deve possuir pelo menos 8 caractéres"),
+})
+
 export default function Home() {
+  const router = useRouter()
+  
+  async function handleSubmit(event) {
+    event.preventDefault()
+
+    const formData = new FormData(event.target)
+    const credentials = Object.fromEntries(formData)
+
+    const user = localStorage.getItem('nutripuc[user]')
+
+    if (user != credentials.email) {
+      toast.error('Usuário não cadastrado')
+
+      return
+    }
+
+  const storedPassword = localStorage.getItem('nutripuc[password]')
+
+  const response = await fetch('/api/login', {
+    cache: 'no-store',
+    method: "POST",
+    body: JSON.stringify({
+      password: credentials.password,
+      storedPassword,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+    }
+  })
+
+    const { authSuccess } = await response.json()
+    console.log(authSuccess)
+
+    if (authSuccess == true) {
+      router.push('/dashboard')
+    } else {
+      toast.error('Senha inválida!')
+    }
+
+  }
+
   return (
     <main className='grid grid-cols-1 lg:grid-cols-2 my-36 items-center bg-teal-100'>
       <div className='min-w-[320px] max-w-[60ch] justify-self-center justify-center items-center flex flex-col md:items-start md:justify-start'>
@@ -13,20 +65,21 @@ export default function Home() {
         <p className='text-center items-center self-center md:text-left md:self-start my-4 max-w-[35ch]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ullam quam voluptatibus deleniti reprehenderit enim esse sit et voluptates ad! </p>
       </div>
       <div className='min-w-[320px] justify-self-center'>
-        <form className='bg-teal-500/25 shadow-2xl p-10 border-2 border-teal-500/10 rounded-xl'>
+        <form method="POST" onSubmit={handleSubmit} className='bg-teal-500/25 shadow-2xl p-10 border-2 border-teal-500/10 rounded-xl'>
           <h3 className='font-bold text-teal-600 text-5xl text-center p-2 m-4 mb-8'>Faça seu login</h3>
 
           <label htmlFor="email" className='block text-teal-600 font-bold my-2 text-lg'>Email</label>
-          <input type="text" placeholder="Email cadastrado" id="email" className='w-full px-4 py-2 rounded-md' />
+          <input type="text" placeholder="Email cadastrado" id="email" name="email" className='w-full px-4 py-2 rounded-md' />
 
           <label htmlFor="password" className='block text-teal-600 font-bold my-2 mt-4 text-lg'>Senha</label>
-          <input type="password" placeholder="Senha" id="password" className='w-full px-4 py-2 rounded-md' />
+          <input type="password" autoComplete='new-password' placeholder="Senha" name="password" id="password" className='w-full px-4 py-2 rounded-md' /> 
 
-          <button className='block w-full bg-teal-500 hover:bg-teal-600 rounded-md mt-8 text-white font-bold tracking-wider p-4 text-2xl'>Entrar</button>
-          <fieldset class="border-t border-slate-400 text-center py-4 mt-8">
-            <legend class="mx-auto px-4 text-slate-400 text-2xl italic">Não tem cadastro?</legend>
-            <Link href="/sign-up" class="text-teal-500 text-lg hover:text-white">Faça cadastro agora</Link>
+          <button type='submit' className='block w-full bg-teal-500 hover:bg-teal-600 rounded-md mt-8 text-white font-bold tracking-wider p-4 text-2xl'>Entrar</button>
+          <fieldset className="border-t border-slate-400 text-center py-4 mt-8">
+            <legend className="mx-auto px-4 text-slate-400 text-2xl italic">Não tem cadastro?</legend>
+            <Link href="/sign-up" className="text-teal-500 text-lg hover:text-white">Faça cadastro agora</Link>
           </fieldset>
+          <Toaster />
         </form>
       </div>
     </main>
