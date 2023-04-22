@@ -1,44 +1,76 @@
 'use client'
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function consumoDeAgua() {
-  const registros = [{
-    id: 0,
-    consumo: 700,
-    horario: new Date("2023-04-19T23:37:50.306Z").toLocaleDateString('pt-BR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-  },
-  {
-    id: 1,
-    consumo: 200,
-    horario: new Date("2023-04-19T20:37:50.306Z").toLocaleDateString('pt-BR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-  }]
 
-  const { meta, setMeta} = useState(0)
+  const [registros, setRegistros] = useState(
+    [{
+      id: 0,
+      consumo: 700,
+      horario: new Date("2023-04-19T23:37:50.306Z").toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    },
+    {
+      id: 1,
+      consumo: 200,
+      horario: new Date("2023-04-19T20:37:50.306Z").toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    }]
+  )
+
+  const [meta, setMeta] = useState(2000)
+  const [consumoDiario, setConsumoDiario] = useState(0)
+  const [aguaConsumida, setAguaConsumida] = useState(0)
+
+  useEffect(() => {
+    const consumoAtual = registros.reduce((acumulador, registroAtual) => {
+      return acumulador + registroAtual.consumo
+    }, 0)
+    setConsumoDiario(consumoAtual)
+  }, [registros])
+
+  function digitarNumero(e) {
+    setMeta(e.target.value)
+  }
+
+  function adicionarRegistro() {
+    setRegistros(valorAnterior => {
+      return [
+        ...valorAnterior,
+        {
+          id: Math.random() * 100,
+          consumo: parseInt(aguaConsumida),
+          horario: new Date().toLocaleDateString('pt-BR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })
+        }
+      ]
+    })
+    setAguaConsumida(0)
+  }
 
   return (
     <div className="flex">
       <div id="primeira-div" className="w-2/3">
         <div className="flex">
-        <h2 className="bg-theme-blue mx-auto p-4 rounded-lg font-bold">Meta Dária de Consumo de Água</h2>
+          <h2 className="bg-theme-blue mx-auto p-4 rounded-lg font-bold">Meta Dária de Consumo de Água</h2>
         </div>
         <div id="barra-de-consumo" className="flex flex-col mx-20 my-2">
           <div className="flex flex-row justify-between">
-          <span className="inline-block">Consumo atual</span>
-          <span className="inline-block text-3xl">{meta} ml<button><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-</svg>
-</button></span>
+            <span className="inline-block">Consumo atual: {consumoDiario}</span>
+            <span className="inline-block text-3xl">Meta: <input value={meta} className="w-[100px]" type="number" onChange={digitarNumero} />ml
+            </span>
           </div>
-          <progress id="consumo-atual" value="32" max="100" className="w-full h-8 rounded-md"> 32% </progress>
+          <progress id="consumo-atual" value={consumoDiario} max={meta} className="w-full [&::-webkit-progress-bar]:rounded-md [&::-webkit-progress-value]:rounded-md [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-blue-400 [&::-moz-progress-bar]:bg-blue-400" />
         </div>
 
         <div id="dashboard-agua" className="flex p-16">
@@ -47,8 +79,8 @@ function consumoDeAgua() {
               registros.map(registro => {
                 return (
                   <div key={registro.id} className="flex flex-col items-center justify-center gap-2">
-                      { (registro.consumo >= 500) && <Image height={100} width={100} src="/garrafa-de-agua.png" />}
-                      { (registro.consumo < 500) && <Image height={100} width={100} src="/copo-de-agua.png" />}
+                    {(registro.consumo >= 500) && <Image height={100} width={100} src="/garrafa-de-agua.png" />}
+                    {(registro.consumo < 500) && <Image height={100} width={100} src="/copo-de-agua.png" />}
                     <div className="flex flex-col bg-white p-2 rounded-md font-bold justify-center items-center text-teal-600">
                       <span>{registro.consumo}</span>
                       <span>{registro.horario}</span>
@@ -58,24 +90,33 @@ function consumoDeAgua() {
               })
             }
           </div>
-          <div id="registro-agua" className="w-1/3">
-            <span id="botao-pre-definido">
-              <button>200ml</button>
-              <button>300ml</button>
-              <button>500ml</button>
-            </span>
+          <div id="registro-agua" className="w-1/3 p-10 flex flex-col items-center">
+            {/* <span id="botao-pre-definido" className="flex justify-between">
+              <input className="ml-2" type="radio" id="200ml" value="200" />
+              <label htmlFor="200ml">200ml
+              </label>
+              <input className="ml-2" type="radio" id="300ml" value="300" />
+              <label htmlFor="300ml">300ml
+              </label>
+              <input className="ml-2" type="radio" id="500ml" value="500" />
+              <label htmlFor="500ml">500ml
+              </label>
+            </span> */}
             <span>
-            <input type="number" step="100" />
-            ml
+              <input className="w-[130px] my-6" type="number" step="100" value={aguaConsumida} onChange={(e) => setAguaConsumida(e.target.value)} /> ml
             </span>
-            <button>Adicionar Registro</button>
+            <button onClick={adicionarRegistro} className="rounded-md p-4 bg-blue-600 text-white">Adicionar Registro</button>
           </div>
         </div>
       </div>
-      <div id="segunda-div" className="bg-black w-1/3 h-[100vh]">
-        Segunda divisão
+      <div id="segunda-div" className="bg-white w-1/3 mr-10 py-10 flex flex-col items-center">
+        <h2 className="font-bold text-lg">Parabéns, hoje você bebeu</h2>
+        <span className="font-bold text-4xl">{(consumoDiario / meta) * 100}%</span>
+        <p>da sua meta diária!</p>
+        <Image className="mt-4" height={400} width={200} src="/copo-maior.jpg" />
+
       </div>
-    </div>
+    </div >
   )
 }
 
