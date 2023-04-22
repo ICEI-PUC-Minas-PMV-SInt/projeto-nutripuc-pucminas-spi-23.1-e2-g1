@@ -23,9 +23,9 @@ export default function Home() {
           <input type="password" placeholder="Senha" id="password" className='w-full px-4 py-2 rounded-md' />
 
           <button className='block w-full bg-teal-500 hover:bg-teal-600 rounded-md mt-8 text-white font-bold tracking-wider p-4 text-2xl'>Entrar</button>
-          <fieldset class="border-t border-slate-400 text-center py-4 mt-8">
-            <legend class="mx-auto px-4 text-slate-400 text-2xl italic">Não tem cadastro?</legend>
-            <Link href="/sign-up" class="text-teal-500 text-lg hover:text-white">Faça cadastro agora</Link>
+          <fieldset className="border-t border-slate-400 text-center py-4 mt-8">
+            <legend className="mx-auto px-4 text-slate-400 text-2xl italic">Não tem cadastro?</legend>
+            <Link href="/sign-up" className="text-teal-500 text-lg hover:text-white">Faça cadastro agora</Link>
           </fieldset>
         </form>
       </div>
