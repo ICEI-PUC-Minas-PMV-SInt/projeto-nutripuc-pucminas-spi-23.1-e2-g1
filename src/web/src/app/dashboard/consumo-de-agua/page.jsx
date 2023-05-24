@@ -28,6 +28,7 @@ function consumoDeAgua() {
   const [meta, setMeta] = useState(2000)
   const [consumoDiario, setConsumoDiario] = useState(0)
   const [aguaConsumida, setAguaConsumida] = useState(0)
+  const porcentagemConsumo = (consumoDiario / meta) * 100
 
   useEffect(() => {
     const consumoAtual = registros.reduce((acumulador, registroAtual) => {
@@ -74,16 +75,16 @@ function consumoDeAgua() {
         </div>
 
         <div id="dashboard-agua" className="flex p-16">
-          <div id="historico-agua" className="w-2/3 bg-theme-blue p-8 rounded-md flex flex-grow h-full min-h-max gap-8">
+          <div id="historico-agua" className="w-2/3 bg-theme-blue p-8 rounded-md h-full min-h-max gap-8 grid grid-cols-4">
             {
               registros.map(registro => {
                 return (
-                  <div key={registro.id} className="flex flex-col items-center justify-center gap-2">
+                  <div key={registro.id} className="flex flex-col items-center justify-end gap-2">
                     {(registro.consumo >= 500) && <Image height={100} width={100} src="/garrafa-de-agua.png" />}
-                    {(registro.consumo < 500) && <Image height={100} width={100} src="/copo-de-agua.png" />}
-                    <div className="flex flex-col bg-white p-2 rounded-md font-bold justify-center items-center text-teal-600">
-                      <span>{registro.consumo}</span>
-                      <span>{registro.horario}</span>
+                    {(registro.consumo < 500) && <Image height={65} width={65} src="/copo-de-agua.png" />}
+                    <div className="flex flex-col bg-white p-2 rounded-md font-bold justify-center items-center text-teal-600 grid-rows-3">
+                      <span>{registro.consumo} ml</span>
+                      <span className="whitespace-nowrap">{registro.horario}</span>
                     </div>
                   </div>
                 )
@@ -111,7 +112,7 @@ function consumoDeAgua() {
       </div>
       <div id="segunda-div" className="bg-white w-1/3 mr-10 py-10 flex flex-col items-center">
         <h2 className="font-bold text-lg">Parabéns, hoje você bebeu</h2>
-        <span className="font-bold text-4xl">{(consumoDiario / meta) * 100}%</span>
+        <span className="font-bold text-4xl">{porcentagemConsumo > 100 ? "100" : porcentagemConsumo.toPrecision(2)}%</span>
         <p>da sua meta diária!</p>
         <Image className="mt-4" height={400} width={200} src="/copo-maior.jpg" />
 

@@ -20,15 +20,19 @@ function calculadoraIMC() {
 
   const calcularIMC = () => {
     const { peso, altura } = dadosPessoais;
-    const imc = (peso / (altura * altura));
+    const imc = (peso / ((altura / 100) * (altura / 100)));
 
     // verficar imc
     if (imc >= 0 && imc < 18.5) {
       setResultado("Abaixo do Peso")
-    } else if (imc > 18.5 && imc <= 25) {
-      setResultado("Saudável")
-    } else if (imc > 25) {
-      setResultado('Obesidade')
+    } else if (imc > 18.5 && imc < 25) {
+      setResultado("Normal")
+    } else if (imc >= 25 && imc < 30) {
+      setResultado('Sobrepeso')
+    } else if (imc >= 30 && imc < 40) {
+      setResultado('Obesidade TIPO I')
+    } else if (imc >= 40) {
+      setResultado('Obesidade TIPO II')
     } else {
       setResultado('Ops, cálculo inválido')
     }
@@ -68,8 +72,8 @@ function calculadoraIMC() {
                   type="number"
                   onChange={handleChange}
                   value={dadosPessoais.altura}
-                  placeholder="exemplo: 1,80"
-                /> (em metros)
+                  placeholder="exemplo: 180"
+                /> (em centímetros)
               </div>
               <div className='mb-8'>
                 <label htmlFor="peso" className='mb-8 font-bold'>Peso</label>

@@ -5,7 +5,8 @@ function diarioDeAlimentacao() {
   const FORMAT_DATE = {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: 'UTC'
   }
 
   const [diarioAlimentar, setDiarioAlimentar] = useState([

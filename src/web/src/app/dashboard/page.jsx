@@ -3,7 +3,7 @@ import React from 'react'
 
 function Dashboard() {
   return (
-    <div className='w-screen h-full flex flex-wrap p-12 gap-10 justify-start'>
+    <div className='w-screen h-full flex flex-wrap p-12 gap-10 justify-center'>
       <Link href="/dashboard/calculadora-imc">
         <div className='w-[520px] h-[520px] bg-teal-900 flex flex-col items-center justify-center rounded-xl shadow-2xl border-2 border-white hover:scale-[1.05] transition-transform duration-1000'>
           <h2 className="text-white text-3xl font-bold">

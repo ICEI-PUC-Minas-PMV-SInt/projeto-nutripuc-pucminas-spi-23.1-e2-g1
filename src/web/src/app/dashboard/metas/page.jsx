@@ -7,7 +7,8 @@ function Metas() {
   const FORMAT_DATE = {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: 'UTC'
   }
 
   const [metas, setMetas] = useState([
@@ -31,6 +32,7 @@ function Metas() {
         ...objMeta,
         prazo: new Date(e.target.value).toLocaleDateString('pt-BR', FORMAT_DATE),
       })
+      console.log(e.target.value)
     } else {
       setObjMeta({
         ...objMeta,
