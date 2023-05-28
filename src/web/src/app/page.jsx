@@ -67,10 +67,10 @@ export default function Home() {
                 <h2 className="md:text-9xl text-center text-7xl text-gray-50 italic font-bold drop-shadow-[2px_2px_2px_rgba(0,0,0,0.25)]">
                     Nutripuc
                 </h2>
-                <h3 className="text-2xl md:text-5xl text-center md:text-start  font-semibold text-slate-500 my-4 max-w-[15ch]">
+                <h3 className="text-2xl md:text-5xl text-center md:text-start font-semibold text-slate-500 my-4 max-w-[15ch]">
                     Seu aplicativo de saúde geral
                 </h3>
-                <p className="text-center items-center self-center md:text-left md:self-start my-4 max-w-[35ch]">
+                <p className="text-center text-slate-500 items-center self-center md:text-left md:self-start my-4 max-w-[35ch]">
                     Estimular a saúde, a qualidade de vida e a prevenção de
                     doenças visando à longevidade. Promover uma relação saudável
                     entre o paciente e o alimento, respeitando preferências e
