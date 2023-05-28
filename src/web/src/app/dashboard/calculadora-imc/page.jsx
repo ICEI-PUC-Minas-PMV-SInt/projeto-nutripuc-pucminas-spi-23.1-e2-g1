@@ -40,7 +40,7 @@ function calculadoraIMC() {
 
   return (
     <div>
-      <div className="flex flex-col">
+      <div className="flex flex-col my-10">
         <h2 className='bg-theme-blue mx-auto p-4 rounded-lg font-bold'>Calculadora IMC</h2>
         <div className='flex flex-row space-between items-center'>
           <div className='mx-auto'>

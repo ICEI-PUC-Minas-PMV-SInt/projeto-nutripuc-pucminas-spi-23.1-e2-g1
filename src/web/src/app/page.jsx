@@ -62,7 +62,7 @@ export default function Home() {
     }
 
     return (
-        <main className="grid grid-cols-1 lg:grid-cols-2 my-36 items-center bg-teal-100">
+        <main className="grid grid-cols-1 lg:grid-cols-2 my-10 items-center bg-teal-100">
             <div className="min-w-[320px] max-w-[60ch] justify-self-center justify-center items-center flex flex-col md:items-start md:justify-start">
                 <h2 className="md:text-9xl text-center text-7xl text-gray-50 italic font-bold drop-shadow-[2px_2px_2px_rgba(0,0,0,0.25)]">
                     Nutripuc

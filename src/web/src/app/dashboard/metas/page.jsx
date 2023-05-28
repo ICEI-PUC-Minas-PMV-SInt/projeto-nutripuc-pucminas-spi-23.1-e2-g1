@@ -71,7 +71,7 @@ function Metas() {
   }
 
   return (
-    <div className="flex w-full h-screen" >
+    <div className="flex w-screnn h-screen m-10" >
       <div className="w-2/3">
         <div className="p-4 bg-white flex flex-col justify-start items-center min-h-[300px]">
             <h1>Metas SMART</h1>

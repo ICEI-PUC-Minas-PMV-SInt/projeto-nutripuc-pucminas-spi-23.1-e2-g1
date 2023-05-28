@@ -18,7 +18,7 @@ function historicoDePeso() {
     }
 
     return (
-        <div className="w-screen min-h-screen bg-teal-500 h-full flex flex-col items-center p-12 gap-10 justify-center">
+        <div className="my-10 w-full bg-teal-500 min-h-[450px] flex flex-col items-center p-12 gap-10 justify-center">
             <div className="flex flex-col wrap w-2/3>">
                 <h1 className="mx-auto mb-4 bg-theme-blue p-4 rounded-lg font-bold text-2xl">
                     Controle de Peso

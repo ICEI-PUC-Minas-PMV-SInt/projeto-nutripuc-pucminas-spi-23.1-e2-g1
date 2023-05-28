@@ -60,7 +60,7 @@ function consumoDeAgua() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex my-10">
       <div id="primeira-div" className="w-2/3">
         <div className="flex">
           <h2 className="bg-theme-blue mx-auto p-4 rounded-lg font-bold">Meta Dária de Consumo de Água</h2>
@@ -75,15 +75,15 @@ function consumoDeAgua() {
         </div>
 
         <div id="dashboard-agua" className="flex p-16">
-          <div id="historico-agua" className="w-2/3 bg-theme-blue p-8 rounded-md h-full min-h-max gap-8 grid grid-cols-4">
+          <div id="historico-agua" className="w-2/3 bg-theme-blue rounded-md justify-center p-3 min-h-max gap-3 flex flex-row flex-wrap items-start">
             {
               registros.map(registro => {
                 return (
-                  <div key={registro.id} className="flex flex-col items-center justify-end gap-2">
-                    {(registro.consumo >= 500) && <Image height={100} width={100} src="/garrafa-de-agua.png" />}
-                    {(registro.consumo < 500) && <Image height={65} width={65} src="/copo-de-agua.png" />}
-                    <div className="flex flex-col bg-white p-2 rounded-md font-bold justify-center items-center text-teal-600 grid-rows-3">
-                      <span>{registro.consumo} ml</span>
+                  <div key={registro.id} className="flex flex-col items-center justify-end">
+                    <div className="flex flex-col bg-white p-2 rounded-md font-bold justify-center items-center text-teal-600">
+                      {(registro.consumo >= 500) && <Image height={65} width={65} src="/garrafa-de-agua.png" />}
+                      {(registro.consumo < 500) && <Image height={65} width={65} src="/copo-de-agua.png" />}
+                      <span >{registro.consumo} ml</span>
                       <span className="whitespace-nowrap">{registro.horario}</span>
                     </div>
                   </div>
@@ -91,7 +91,7 @@ function consumoDeAgua() {
               })
             }
           </div>
-          <div id="registro-agua" className="w-1/3 p-10 flex flex-col items-center">
+          <div id="registro-agua" className="w-1/3 min-h-[300px] p-10 flex flex-col items-center">
             {/* <span id="botao-pre-definido" className="flex justify-between">
               <input className="ml-2" type="radio" id="200ml" value="200" />
               <label htmlFor="200ml">200ml

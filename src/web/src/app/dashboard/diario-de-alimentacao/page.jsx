@@ -53,7 +53,7 @@ function diarioDeAlimentacao() {
   return (
     <div className="flex w-full h-screen" >
       <div className="w-2/3">
-        <div className="p-4 bg-white flex justify-center items-start min-h-[300px]">
+        <div className="p-4 my-10 bg-white flex justify-center items-start min-h-[300px]">
           <table className="table-auto">
             <thead>
               <tr>
