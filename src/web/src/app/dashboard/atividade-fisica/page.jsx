@@ -56,7 +56,7 @@ function AtividadeFisica() {
   }
 
   return (
-    <div className="flex my-10">
+    <div className="flex my-10 min-h-[400px]">
       <div className="col-esquerda flex flex-col wrap w-2/3">
         <h1 className="mx-auto mb-4 bg-theme-blue p-4 rounded-lg font-bold">Registro de Atividades Físicas</h1>
         <div className="mx-auto">
